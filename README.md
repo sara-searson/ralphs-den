@@ -28,8 +28,11 @@ A place to finally catalogue your game library! Now if only it could event more 
 - SUPER STRETCH: game reccs based on previous played/owned titles (eg. if you have a lot of turn-based games, it will recommend a random tbg of above a certain review threshold from the public data entity)
 
 ### ERD
+<img src="assets/erd.jpeg" height="250px">
 
-### Wireframe
+### Wireframes
+<img src="assets/wireframe-web.jpeg" height="250px"><br />
+<img src="assets/wireframe-mobile.jpeg" height="250px">
 
 ### User Stories
 
