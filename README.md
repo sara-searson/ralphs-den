@@ -31,8 +31,8 @@ A place to finally catalogue your game library! Now if only it could event more 
 <img src="assets/erd.jpeg" height="250px">
 
 ### Wireframes
-<img src="assets/wireframe-web.jpeg" height="250px"><br />
-<img src="assets/wireframe-mobile.jpeg" height="250px">
+<img src="assets/wireframe-web.jpeg" height="400px"><br />
+<img src="assets/wireframe-mobile.jpeg" height="400px">
 
 ### User Stories
 
