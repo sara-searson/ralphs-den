@@ -36,7 +36,7 @@ A place to finally catalogue your game library! Now if only it could event more 
 
 ### User Stories
 
-AAU: Create an account and add my games to my library
-AAU: Review my favorite games
+AAU: Create an account and add my games to my library<br />
+AAU: Review my favorite games<br />
 AAU: Sort my games library by played, system, genre, rating, etc.
 
