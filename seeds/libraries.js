@@ -10,7 +10,7 @@ const main = async () => {
     const JTaubs = await User.findOne({ username: 'JTaubs' })
     const CannonEvent = await User.findOne({ username: 'CannonEvent' })
     const MoraTellYa = await User.findOne ({ username: 'MoraTellYa' })
-    const SandsOfTime = await User.findOne ({ username: 'SandOfTime' })
+    const SandsOfTime = await User.findOne ({ username: 'SandsOfTime' })
     const coolsrud = await User.findOne({ username: 'coolsrud' })
 
     const libraries = [
