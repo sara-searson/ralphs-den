@@ -34,8 +34,15 @@ footer {
     background: yellow;
 }
 
+#main {
+    display: flex;
+}
 
-
+.images {
+    width: 30%;
+    height: fit-content;
+   justify-content: space-evenly;
+}
 
 .hidden {
     display: none;
