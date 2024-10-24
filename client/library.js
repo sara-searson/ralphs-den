@@ -4,8 +4,8 @@ let user = params.get('libid');
 
 const signUp = document.querySelector('#nav1')
 const home = document.querySelector('#nav2')
-const aboutUs = document.querySelector('#nav3')
-const gamePage = document.querySelector('#nav4')
+const gamePage = document.querySelector('#nav3')
+const aboutUs = document.querySelector('#nav4')
 
 signUp.classList.add('hidden')
 
@@ -87,4 +87,12 @@ document.addEventListener('click', (event) => {
           console.log(`Game Clicked: ${gameId}`)
         //   updateName()
     }
+})
+
+home.addEventListener('click', async () => {
+    window.location.href = 'http://127.0.0.1:5500/client/about.html'
+})
+
+aboutUs.addEventListener('click', async () => {
+    window.location.href = 'http://127.0.0.1:5500/client/'
 })

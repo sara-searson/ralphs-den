@@ -12,11 +12,26 @@ const getAllLibraries = async (req, res) => {
 const getLibraryById = async (req, res) => {
     try {
         const { id } = req.params
+        console.log(id)
         const library = await Library.findById(id)
         if (library) {
             return res.json(library)
         }
         return res.status(404).send('This library cannot be found')
+    } catch (e) {
+        return res.status(500).send(e.message)
+    }
+}
+
+const getLibraryByUser = async (req, res) => {
+    try {
+        const { userId } = req.params
+        console.log(userId)
+        const library = await Library.findOne({ owner: userId })
+        if (library) {
+            return res.json(library)
+        }
+        return res.status(404).send("This user's library cannot be found")
     } catch (e) {
         return res.status(500).send(e.message)
     }
@@ -66,6 +81,7 @@ const deleteLibrary = async (req, res) => {
 module.exports = {
     getAllLibraries, 
     getLibraryById, 
+    getLibraryByUser,
     createLibrary,
     updateLibrary, 
     deleteLibrary

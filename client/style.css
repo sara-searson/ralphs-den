@@ -87,6 +87,26 @@ button {
     margin-top: 10vh;
 }
 
+#construction {
+    display: grid;
+    align-items: center;
+}
+
+#under-construction {
+    max-width: 85vw;
+    height: fit-content;
+}
+
+#about-info {
+    text-align: justify;
+    min-width: 55vw;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin-left: 15vw;
+    margin-right: 10vw;
+}
+
 .hidden {
     display: none;
 }

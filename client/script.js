@@ -283,7 +283,11 @@ library.addEventListener('click', async () => {
       const currentPassword = document.querySelector('.current-password').value
       const response = await axios.get(`http://localhost:3001/users/name/${username}`)
       const id = response.data._id
-      window.location.href = `http://127.0.0.1:5500/client/library.html#${id}`
+      const libData = await axios.get(`http://localhost:3001/libraries/user/${id}`)
+      // console.log(libData)
+      const libId = libData.data._id
+      // console.log(libId)
+      window.location.href = `http://127.0.0.1:5500/client/library.html#libid=${libId}`
 })
 
 aboutUs.addEventListener('click', async () => {

@@ -37,6 +37,8 @@ app.get("/libraries", libraryController.getAllLibraries)
 
 app.get("/libraries/:id", libraryController.getLibraryById)
 
+app.get("/libraries/user/:userId", libraryController.getLibraryByUser)
+
 app.post ("/libraries", libraryController.createLibrary)
 
 app.put("/libraries/:id", libraryController.updateLibrary)
