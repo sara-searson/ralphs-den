@@ -45,6 +45,7 @@ header {
     background: #D8B9AC;
     display: flex;
     justify-content: space-between;
+    flex-wrap: wrap;
 }
 
 footer {
@@ -65,6 +66,10 @@ footer {
 
 .game-container {
     border-style: solid;
+}
+
+.game-id {
+    font-size: xx-small;
 }
 
 .nav-itmes {

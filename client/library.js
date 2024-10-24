@@ -7,6 +7,8 @@ const home = document.querySelector('#nav2')
 const gamePage = document.querySelector('#nav3')
 const aboutUs = document.querySelector('#nav4')
 
+const sideBar = document.querySelector('#side-bar')
+
 signUp.classList.add('hidden')
 
 const gameContainers = document.querySelectorAll('.game-container')
@@ -79,7 +81,22 @@ const loadLibrary = async () => {
     }
 }
 
+const loadSideBar = async () => {
+    const newGameCont = document.createElement('div')
+        newGameCont.classList.add('new-game-cont')
+    const gameSearch = document.createElement('input')
+        gameSearch.type = 'text'
+        gameSearch.placeholder = 'Add new game'
+        newGameCont.appendChild(gameSearch)
+    const gameSearchBtn = document.createElement('button')
+        gameSearchBtn.type = 'button'
+        gameSearchBtn.innerText = 'Find Game'
+        newGameCont.appendChild(gameSearchBtn)
+    sideBar.appendChild(newGameCont)
+}
+
 loadLibrary()
+loadSideBar()
 
 document.addEventListener('click', (event) => {
     if (event.target && event.target.classList.contains('game-container')) {
