@@ -133,15 +133,10 @@ const addEntryForm = () => {
         hrsPlayed.placeholder = 'How long did you play it?'
         hrsPlayed.classList.add('hrsPlayed')
         updateContainer.appendChild(hrsPlayed)
-    const beat = document.createElement('input')
-        beat.type = 'text'
-        beat.placeholder = 'How long did you play it?'
-        beat.classList.add('beat')
-        updateContainer.appendChild(beat)
     const addButton = document.createElement('button')
         addButton.type = 'button'
         addButton.classList.add('add-game-btn')
-        addButton.innerText = 'Add Games'
+        addButton.innerText = 'Add Game'
         updateContainer.appendChild(addButton)
     sideBar.appendChild(updateContainer)
 }
@@ -165,16 +160,19 @@ const searchGames = async () => {
 }
 
 const addGame = async () => {
-    const owned = document.querySelector('.owned')
-    const played = document.querySelector('.played')
-    const hrsPlayed = document.querySelector('.hrsPlayed')
-    const beat = document.querySelector('.beat')
-    const gameId = document.querySelector('.new-game-id')
-    if (owned && played && hrsPlayed && beat) {
+    const ownedValue = document.querySelector('.owned').value.toLowerCase()
+    const owned = (ownedValue === 'true' || ownedValue === 'yes');
+    const played = document.querySelector('.played').value
+    const hrsPlayed = document.querySelector('.hrsPlayed').value
+    const gameId = document.querySelector('.new-game-id').innerHTML
+    console.log( owned, played, hrsPlayed, gameId)
+    if (owned && played && hrsPlayed) {
         const newPost = await axios.post('http://localhost:3001/entries', 
             {game: gameId,
                 library: user,
-                owned: owned
+                owned: owned,
+                played: played,
+                play_time_hrs: hrsPlayed
             }
         )
     }
@@ -196,7 +194,9 @@ document.addEventListener('click', (event) => {
 })
 
 document.addEventListener('click', (event) => {
-    if (event.target && event.taget.classList.contains('add-game-button')) {
-
+    if (event.target && event.target.classList.contains('add-game-btn')) {
+        console.log('add game pressed')
+        addGame()
+        location.reload()
     }
 })
