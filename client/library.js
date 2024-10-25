@@ -11,6 +11,8 @@ const sideBar = document.querySelector('#side-bar')
 
 signUp.classList.add('hidden')
 
+const searchButton = document.querySelector('.game-search-button')
+
 const gameContainers = document.querySelectorAll('.game-container')
 const gameContainer1 = document.querySelector('.game-container1')
 const gameContainer2 = document.querySelector('.game-container2')
@@ -85,12 +87,14 @@ const loadSideBar = async () => {
     const newGameCont = document.createElement('div')
         newGameCont.classList.add('new-game-cont')
     const gameSearch = document.createElement('input')
+        gameSearch.classList.add('game-search-bar')
         gameSearch.type = 'text'
-        gameSearch.placeholder = 'Add new game'
+        gameSearch.placeholder = 'Find new game'
         newGameCont.appendChild(gameSearch)
     const gameSearchBtn = document.createElement('button')
+        gameSearchBtn.classList.add('game-search-button')
         gameSearchBtn.type = 'button'
-        gameSearchBtn.innerText = 'Find Game'
+        gameSearchBtn.innerText = 'Add Game'
         newGameCont.appendChild(gameSearchBtn)
     sideBar.appendChild(newGameCont)
 }
@@ -106,10 +110,93 @@ document.addEventListener('click', (event) => {
     }
 })
 
+const addEntryForm = () => {
+    document.querySelector('.new-game-cont').classList.add('hidden')
+    const updateContainer = document.createElement('div')
+          updateContainer.classList.add('entry-container')
+    const newGameInfo = document.createElement('h2')
+          newGameInfo.innerText = `Add this game to your Library`
+          newGameInfo.classList.add('new-game-info')
+          updateContainer.appendChild(newGameInfo)
+    const owned = document.createElement('input')
+        owned.type = 'text'
+        owned.placeholder = 'Do you own it?'
+        owned.classList.add('owned')
+        updateContainer.appendChild(owned)
+    const played = document.createElement('input')
+        played.type = 'text'
+        played.placeholder = 'Have you played it?'
+        played.classList.add('played')
+        updateContainer.appendChild(played)
+    const hrsPlayed = document.createElement('input')
+        hrsPlayed.type = 'text'
+        hrsPlayed.placeholder = 'How long did you play it?'
+        hrsPlayed.classList.add('hrsPlayed')
+        updateContainer.appendChild(hrsPlayed)
+    const beat = document.createElement('input')
+        beat.type = 'text'
+        beat.placeholder = 'How long did you play it?'
+        beat.classList.add('beat')
+        updateContainer.appendChild(beat)
+    const addButton = document.createElement('button')
+        addButton.type = 'button'
+        addButton.classList.add('add-game-btn')
+        addButton.innerText = 'Add Games'
+        updateContainer.appendChild(addButton)
+    sideBar.appendChild(updateContainer)
+}
+
+const searchGames = async () => {
+    const searchInput = document.querySelector('.game-search-bar')
+    const searchValue = searchInput.value
+    const searchedGame = searchValue.replace(/ /g, '%20')
+    // console.log(searchedGame)
+    const response = await axios.get(`http://localhost:3001/games/title/${searchedGame}`)
+    console.log(response)
+    const gameId = response.data._id
+    console.log(gameId)
+    const gameIdText = document.createElement('p')
+        gameIdText.innerText = gameId
+        gameIdText.classList.add('new-game-id')
+        sideBar.appendChild(gameIdText)
+    if (gameId) {
+        addEntryForm()
+    }
+}
+
+const addGame = async () => {
+    const owned = document.querySelector('.owned')
+    const played = document.querySelector('.played')
+    const hrsPlayed = document.querySelector('.hrsPlayed')
+    const beat = document.querySelector('.beat')
+    const gameId = document.querySelector('.new-game-id')
+    if (owned && played && hrsPlayed && beat) {
+        const newPost = await axios.post('http://localhost:3001/entries', 
+            {game: gameId,
+                library: user,
+                owned: owned
+            }
+        )
+    }
+}
+
 home.addEventListener('click', async () => {
-    window.location.href = 'http://127.0.0.1:5500/client/about.html'
+    window.location.href = 'http://127.0.0.1:5500/client/'
 })
 
 aboutUs.addEventListener('click', async () => {
-    window.location.href = 'http://127.0.0.1:5500/client/'
+    window.location.href = 'http://127.0.0.1:5500/client/about.html'
+})
+
+document.addEventListener('click', (event) => {
+    if (event.target && event.target.classList.contains('game-search-button')) {
+        console.log('new game btn pressed')
+        searchGames()
+    }
+})
+
+document.addEventListener('click', (event) => {
+    if (event.target && event.taget.classList.contains('add-game-button')) {
+
+    }
 })
